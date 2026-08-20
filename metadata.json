@@ -1,0 +1,6 @@
+{
+  "name": "Site & Google Cloud Hosting",
+  "description": "Vitrine de aplicativos e projetos ScienceBit para ciência da computação, cloud e IoT, com editor visual e guia completo de hospedagem no Google Cloud e configuração de domínio no Registro.br.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
