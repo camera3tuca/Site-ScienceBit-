@@ -153,26 +153,12 @@ export const SitePreview: React.FC<SitePreviewProps> = ({
           </div>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600">
-            <a href="#monitor-b3" className="text-blue-600 font-semibold hover:text-blue-700 transition-colors">Monitor B3</a>
+          <nav className="flex items-center space-x-6 text-sm font-medium text-slate-600">
             <a href="#apps" className="hover:text-blue-600 transition-colors">Aplicações Streamlit & Cloud</a>
             <a href="#skills" className="hover:text-blue-600 transition-colors">Stack & Cloud</a>
             <a href="#sobre" className="hover:text-blue-600 transition-colors">Formação UFG/Senac</a>
-            <a href="#contato" className="hover:text-blue-600 transition-colors">Contato</a>
+            <a href="#contato" className="hover:text-blue-600 transition-colors font-semibold text-blue-600">Contato</a>
           </nav>
-
-          {/* Header Action Link */}
-          <div className="flex items-center space-x-2">
-            <a
-              href="https://monitor-b3.ai.studio/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl text-white ${theme.primary} ${theme.primaryHover} transition-all shadow-sm flex items-center gap-1.5`}
-            >
-              <TrendingUp className="w-3.5 h-3.5" />
-              <span>Abrir Monitor B3</span>
-            </a>
-          </div>
         </div>
       </header>
 
