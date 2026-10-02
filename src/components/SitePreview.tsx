@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SiteContent } from '../types';
 import { THEMES } from '../data/templates';
+import { ScienceBitLogo } from './ScienceBitLogo';
 import { 
   Phone, 
   Mail, 
@@ -56,6 +57,7 @@ interface SitePreviewProps {
   deviceView: 'desktop' | 'tablet' | 'mobile';
   onNavigateToGuide?: () => void;
   onNavigateToDns?: () => void;
+  onOpenPrivacy?: () => void;
 }
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -99,7 +101,8 @@ export const SitePreview: React.FC<SitePreviewProps> = ({
   content, 
   deviceView, 
   onNavigateToGuide,
-  onNavigateToDns 
+  onNavigateToDns,
+  onOpenPrivacy 
 }) => {
   const theme = THEMES[content.theme] || THEMES.indigo;
   const [formSent, setFormSent] = useState(false);
@@ -136,20 +139,12 @@ export const SitePreview: React.FC<SitePreviewProps> = ({
       
       {/* Main Header / Navigation */}
       <header className="sticky top-0 z-20 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className={`w-10 h-10 rounded-xl ${theme.primary} flex items-center justify-center text-white font-bold text-lg shadow-md`}>
-              <Cpu className="w-6 h-6" />
-            </div>
-            <div>
-              <div className="font-black text-lg sm:text-xl text-slate-900 tracking-tight flex items-center gap-2">
-                <span>{content.brandName}</span>
-                <span className="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded-full border border-slate-200 font-mono">
-                  {content.domainName || 'sciencebit.com.br'}
-                </span>
-              </div>
-              <p className="text-[11px] text-slate-500 line-clamp-1">{content.tagline}</p>
-            </div>
+            <ScienceBitLogo variant="light" size="sm" showSubtitle={true} />
+            <span className="hidden sm:inline-block text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded-full border border-slate-200 font-mono">
+              {content.domainName || 'sciencebit.com.br'}
+            </span>
           </div>
 
           {/* Desktop Nav Links */}
@@ -171,6 +166,13 @@ export const SitePreview: React.FC<SitePreviewProps> = ({
 
         <div className="max-w-5xl mx-auto relative z-10 text-center space-y-6">
           
+          {/* Official Brand Logo Mark */}
+          <div className="flex justify-center mb-2">
+            <div className="p-4 sm:p-5 rounded-3xl bg-slate-900/90 border border-slate-800 shadow-2xl backdrop-blur-md inline-flex flex-col items-center">
+              <ScienceBitLogo variant="dark" size="lg" showSubtitle={true} />
+            </div>
+          </div>
+
           {/* Academic & Specialty Badges */}
           <div className="flex flex-wrap items-center justify-center gap-2">
             <span className="inline-flex items-center gap-1.5 bg-blue-500/10 border border-blue-400/30 text-blue-300 text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">
@@ -1000,14 +1002,37 @@ export const SitePreview: React.FC<SitePreviewProps> = ({
 
       {/* Footer */}
       <footer className="bg-slate-950 text-slate-400 py-10 px-4 sm:px-6 border-t border-slate-800 text-xs">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-          <div>
-            <div className="font-bold text-white text-sm">{content.brandName} • {content.domainName || 'sciencebit.com.br'}</div>
-            <p className="text-slate-500 mt-1">{content.academicTitle}</p>
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+          <div className="flex flex-col sm:flex-row items-center gap-3">
+            <ScienceBitLogo variant="dark" size="sm" showSubtitle={true} />
+            <span className="hidden sm:inline text-slate-700">•</span>
+            <p className="text-slate-500">{content.academicTitle}</p>
           </div>
 
-          <div className="text-slate-500">
-            {content.footerText}
+          <div className="flex flex-col sm:flex-row items-center gap-3 text-slate-500">
+            <span>{content.footerText}</span>
+            <span className="hidden sm:inline text-slate-700">•</span>
+            <a
+              href="/politica-de-privacidade.html"
+              onClick={(e) => {
+                if (onOpenPrivacy) {
+                  e.preventDefault();
+                  onOpenPrivacy();
+                }
+              }}
+              className="text-slate-400 hover:text-blue-400 underline underline-offset-4 transition-colors font-medium cursor-pointer"
+            >
+              Política de Privacidade
+            </a>
+            <span className="hidden sm:inline text-slate-700">•</span>
+            <a
+              href="/privacy.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-500 hover:text-slate-300 transition-colors text-xs"
+            >
+              Privacy Policy
+            </a>
           </div>
         </div>
       </footer>

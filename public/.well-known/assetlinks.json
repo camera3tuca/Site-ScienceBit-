@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "br.com.sciencebit.app",
+      "sha256_cert_fingerprints": [
+        "14:6D:E9:44:AB:F0:60:73:86:8E:90:E2:69:6B:46:76:F1:A6:F3:F4:9F:65:47:28:52:14:7E:CF:5F:C9:F6:9D"
+      ]
+    }
+  }
+]

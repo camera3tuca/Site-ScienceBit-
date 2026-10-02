@@ -7,25 +7,87 @@ import { GcpHostingGuide } from './components/GcpHostingGuide';
 import { DeployConfigGenerator } from './components/DeployConfigGenerator';
 import { GcpCostCalculator } from './components/GcpCostCalculator';
 import { ExportModal } from './components/ExportModal';
+import { PrivacyPolicyModal } from './components/PrivacyPolicyModal';
+import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
+import { PlayStoreGuide } from './components/PlayStoreGuide';
+import { ScienceBitLogo } from './components/ScienceBitLogo';
 import { 
   Cloud, 
   Settings, 
   Globe, 
   FileCode, 
   Calculator, 
-  ExternalLink,
-  Download,
-  CheckCircle2,
-  Radio,
-  Sliders
+  ExternalLink, 
+  Download, 
+  CheckCircle2, 
+  Radio, 
+  Sliders,
+  Play
 } from 'lucide-react';
 
 export default function App() {
   const [content, setContent] = useState<SiteContent>(TEMPLATE_PRESETS.sciencebit);
-  const [activeTab, setActiveTab] = useState<'editor' | 'preview' | 'gcp-guide' | 'deploy-files' | 'cost-calc'>('preview');
+  const [activeTab, setActiveTab] = useState<'editor' | 'preview' | 'gcp-guide' | 'deploy-files' | 'cost-calc' | 'play-store'>('preview');
   const [deviceView, setDeviceView] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
   const [isExportOpen, setIsExportOpen] = useState<boolean>(false);
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState<boolean>(false);
   const [showAdminPanel, setShowAdminPanel] = useState<boolean>(false);
+
+  const [currentRoute, setCurrentRoute] = useState<'home' | 'privacy'>(() => {
+    if (typeof window !== 'undefined') {
+      const p = window.location.pathname.toLowerCase();
+      const h = window.location.hash.toLowerCase();
+      if (
+        p.includes('privacidade') || 
+        p.includes('privacy') || 
+        h.includes('privacidade') || 
+        h.includes('privacy')
+      ) {
+        return 'privacy';
+      }
+    }
+    return 'home';
+  });
+
+  React.useEffect(() => {
+    const handleUrlChange = () => {
+      const p = window.location.pathname.toLowerCase();
+      const h = window.location.hash.toLowerCase();
+      if (
+        p.includes('privacidade') || 
+        p.includes('privacy') || 
+        h.includes('privacidade') || 
+        h.includes('privacy')
+      ) {
+        setCurrentRoute('privacy');
+      } else {
+        setCurrentRoute('home');
+      }
+    };
+    window.addEventListener('popstate', handleUrlChange);
+    window.addEventListener('hashchange', handleUrlChange);
+    return () => {
+      window.removeEventListener('popstate', handleUrlChange);
+      window.removeEventListener('hashchange', handleUrlChange);
+    };
+  }, []);
+
+  // Se a rota for a Política de Privacidade (Google Play Store ou clique do usuário)
+  if (currentRoute === 'privacy') {
+    return (
+      <PrivacyPolicyPage
+        onBackToHome={() => {
+          setCurrentRoute('home');
+          if (window.history.pushState) {
+            window.history.pushState(null, '', '/');
+          }
+        }}
+        brandName="Science Bit COMPUTER"
+        domainName="sciencebit.com.br"
+        contactEmail="camera3.tuca@gmail.com"
+      />
+    );
+  }
 
   // Se o painel administrativo estiver fechado, exibe DIRETAMENTE o site oficial em tela cheia limpa
   if (!showAdminPanel && activeTab === 'preview') {
@@ -35,10 +97,37 @@ export default function App() {
         <SitePreview
           content={content}
           deviceView="desktop"
+          onOpenPrivacy={() => {
+            setCurrentRoute('privacy');
+            if (window.history.pushState) {
+              window.history.pushState(null, '', '/politica-de-privacidade');
+            }
+          }}
         />
 
         {/* Botão flutuante discreto no canto inferior para você poder abrir o painel de edição a qualquer momento */}
-        <div className="fixed bottom-4 right-4 z-50">
+        <div className="fixed bottom-4 right-4 z-50 flex items-center gap-2">
+          <button
+            onClick={() => setIsExportOpen(true)}
+            className="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-500 text-white px-3.5 py-2.5 rounded-full border border-blue-500 shadow-xl backdrop-blur-md text-xs font-bold transition-all hover:scale-105"
+            title="Como Fazer o Deploy e Publicar"
+          >
+            <Cloud className="w-3.5 h-3.5" />
+            <span>Deploy</span>
+          </button>
+
+          <button
+            onClick={() => {
+              setActiveTab('play-store');
+              setShowAdminPanel(true);
+            }}
+            className="flex items-center gap-1.5 bg-slate-900/90 hover:bg-slate-800 text-slate-200 hover:text-white px-3.5 py-2.5 rounded-full border border-slate-700 shadow-xl backdrop-blur-md text-xs font-semibold transition-all hover:scale-105"
+            title="Guia Google Play Store"
+          >
+            <Play className="w-3.5 h-3.5 text-emerald-400 fill-current" />
+            <span>Google Play</span>
+          </button>
+
           <button
             onClick={() => setShowAdminPanel(true)}
             className="flex items-center gap-2 bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white px-4 py-2.5 rounded-full border border-slate-700 shadow-xl backdrop-blur-md text-xs font-semibold transition-all hover:scale-105"
@@ -55,6 +144,20 @@ export default function App() {
           onClose={() => setIsExportOpen(false)}
           content={content}
         />
+
+        {/* Privacy Policy Modal */}
+        <PrivacyPolicyModal
+          isOpen={isPrivacyOpen}
+          onClose={() => {
+            setIsPrivacyOpen(false);
+            if (window.location.hash === '#privacidade' || window.location.hash === '#politica-de-privacidade' || window.location.hash === '#privacy') {
+              window.history.replaceState(null, '', window.location.pathname);
+            }
+          }}
+          brandName={content.brandName}
+          domainName={content.domainName || 'sciencebit.com.br'}
+          contactEmail={content.contactEmail}
+        />
       </div>
     );
   }
@@ -68,21 +171,16 @@ export default function App() {
           <div className="flex items-center justify-between h-16">
             
             {/* Logo & Info */}
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
-                <Cloud className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <div className="flex items-center space-x-2">
-                  <span className="font-bold text-base tracking-tight text-white">ScienceBit Hub</span>
-                  <span className="bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs px-2 py-0.5 rounded-full font-medium flex items-center gap-1">
-                    <CheckCircle2 className="w-3 h-3 text-emerald-400" />
-                    No Ar no GCP
-                  </span>
-                </div>
-                <p className="text-xs text-slate-400">
+            <div className="flex items-center space-x-4">
+              <ScienceBitLogo variant="dark" size="sm" showSubtitle={true} />
+              <div className="hidden sm:flex items-center space-x-2 border-l border-slate-800 pl-3">
+                <span className="bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-[11px] px-2 py-0.5 rounded-full font-medium flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                  No Ar no GCP
+                </span>
+                <span className="text-xs text-slate-400 font-mono">
                   {content.domainName || 'sciencebit.com.br'}
-                </p>
+                </span>
               </div>
             </div>
 
@@ -121,6 +219,30 @@ export default function App() {
               >
                 <Radio className="w-4 h-4" />
                 <span>DNS / GCP</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTab('deploy-files')}
+                className={`hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+                  activeTab === 'deploy-files'
+                    ? 'bg-slate-700 text-white'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
+                }`}
+              >
+                <FileCode className="w-4 h-4" />
+                <span>Arquivos Deploy</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTab('play-store')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+                  activeTab === 'play-store'
+                    ? 'bg-emerald-700 text-white font-bold'
+                    : 'text-emerald-300 hover:text-white hover:bg-slate-700/50'
+                }`}
+              >
+                <Play className="w-3.5 h-3.5 fill-current text-emerald-400" />
+                <span>Google Play</span>
               </button>
 
               <button
@@ -174,6 +296,7 @@ export default function App() {
               deviceView="desktop"
               onNavigateToGuide={() => setActiveTab('gcp-guide')}
               onNavigateToDns={() => setActiveTab('gcp-guide')}
+              onOpenPrivacy={() => setIsPrivacyOpen(true)}
             />
           </div>
         )}
@@ -187,6 +310,14 @@ export default function App() {
         {/* Tab 5: Cost & Free Tier Simulator */}
         {activeTab === 'cost-calc' && <GcpCostCalculator />}
 
+        {/* Tab 6: Google Play Store Guide */}
+        {activeTab === 'play-store' && (
+          <PlayStoreGuide
+            onOpenPrivacyModal={() => setIsPrivacyOpen(true)}
+            domainName={content.domainName || 'sciencebit.com.br'}
+          />
+        )}
+
       </main>
 
       {/* Export Modal */}
@@ -194,6 +325,20 @@ export default function App() {
         isOpen={isExportOpen}
         onClose={() => setIsExportOpen(false)}
         content={content}
+      />
+
+      {/* Privacy Policy Modal */}
+      <PrivacyPolicyModal
+        isOpen={isPrivacyOpen}
+        onClose={() => {
+          setIsPrivacyOpen(false);
+          if (window.location.hash === '#privacidade' || window.location.hash === '#politica-de-privacidade' || window.location.hash === '#privacy') {
+            window.history.replaceState(null, '', window.location.pathname);
+          }
+        }}
+        brandName={content.brandName}
+        domainName={content.domainName || 'sciencebit.com.br'}
+        contactEmail={content.contactEmail}
       />
 
     </div>

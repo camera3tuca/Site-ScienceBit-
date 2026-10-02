@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy / Política de Privacidade — Science Bit COMPUTER</title>
+  <meta name="description" content="Official Privacy Policy for Science Bit COMPUTER applications on Google Play Store." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://sciencebit.com.br/privacy.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Privacy Policy — Science Bit COMPUTER" />
+  <meta property="og:description" content="Official Privacy Policy for Google Play Store apps by Science Bit COMPUTER." />
+  <meta property="og:url" content="https://sciencebit.com.br/privacy.html" />
+  <meta property="og:image" content="https://sciencebit.com.br/icone-desenvolvedor-512x512.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0066FF;
+      --primary-dark: #004ecc;
+      --bg: #070b15;
+      --card-bg: #0e172a;
+      --border: #1e293b;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-green: #10b981;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #070b15;
+      color: #e2e8f0;
+      line-height: 1.7;
+      padding: 0;
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 24px 20px 80px; }
+
+    header {
+      background: rgba(14, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .brand-logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      border: 1px solid #1e293b;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .brand-logo img { width: 100%; height: 100%; object-fit: cover; }
+    .brand-title { font-size: 16px; font-weight: 800; letter-spacing: -0.02em; }
+    .brand-title span { color: var(--primary); }
+    .brand-sub { font-size: 10px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; display: block; }
+
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-secondary { background: #1e293b; color: #e2e8f0; border-color: #334155; }
+    .btn-secondary:hover { background: #334155; color: #fff; }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); }
+
+    .badge-bar {
+      margin: 32px 0 24px;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(16, 185, 129, 0.08) 100%);
+      border: 1px solid rgba(0, 102, 255, 0.3);
+      border-radius: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .badge-status { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; color: #60a5fa; }
+    .badge-pill { display: inline-block; width: 10px; height: 10px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981; }
+    .badge-details { font-size: 11px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+
+    .hero { margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .hero h1 { font-size: 32px; font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 12px; color: var(--text-muted); }
+    .hero-meta span strong { color: #e2e8f0; }
+
+    .policy-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .policy-card h2 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+    .policy-card h2 .num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px; border-radius: 8px; background: rgba(0, 102, 255, 0.15);
+      color: #60a5fa; font-size: 13px; font-weight: 800;
+    }
+
+    .policy-card p { font-size: 14px; color: #cbd5e1; margin-bottom: 12px; }
+    .policy-card p:last-child { margin-bottom: 0; }
+    .policy-card ul { margin: 12px 0 16px 20px; color: #cbd5e1; font-size: 14px; }
+    .policy-card li { margin-bottom: 8px; }
+    .policy-card strong { color: #fff; }
+
+    .table-container { overflow-x: auto; margin: 16px 0; border-radius: 12px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; }
+    th { background: #1e293b; color: #f1f5f9; padding: 12px 16px; font-weight: 700; border-bottom: 1px solid var(--border); }
+    td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: #cbd5e1; }
+    tr:last-child td { border-bottom: none; }
+    .tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; background: rgba(0, 102, 255, 0.15); color: #60a5fa; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(0, 102, 255, 0.3); display: inline-block; }
+
+    .callout-box { background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 12px; padding: 16px; margin: 16px 0; font-size: 13px; color: #a7f3d0; }
+    .callout-box strong { color: #34d399; }
+
+    .callout-deletion { background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 12px; padding: 18px; margin: 16px 0; font-size: 13px; color: #fca5a5; }
+    .callout-deletion strong { color: #f87171; }
+
+    footer { border-top: 1px solid var(--border); padding: 32px 20px; text-align: center; font-size: 12px; color: var(--text-muted); }
+    footer a { color: #60a5fa; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media print {
+      body { background: #fff; color: #000; }
+      header, .nav-actions, .badge-bar { display: none; }
+      .policy-card { background: #fff; border: 1px solid #ccc; color: #000; page-break-inside: avoid; }
+      .policy-card h2, .hero h1 { color: #000; }
+      .policy-card p, .policy-card li { color: #333; }
+      th { background: #eee; color: #000; }
+      td { color: #333; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-inner">
+      <a href="/" class="brand">
+        <div class="brand-logo">
+          <img src="/icone-desenvolvedor-512x512.png" alt="Science Bit Logo" />
+        </div>
+        <div>
+          <div class="brand-title">Science<span>Bit</span></div>
+          <span class="brand-sub">COMPUTER</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <button onclick="window.print()" class="btn btn-secondary" title="Print or Save as PDF">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          <span>Imprimir / PDF</span>
+        </button>
+        <a href="/" class="btn btn-primary">
+          <span>Acessar Site</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="badge-bar">
+      <div class="badge-status">
+        <span class="badge-pill"></span>
+        <span>Google Play Store &amp; LGPD Privacy Policy Compliance</span>
+      </div>
+      <div class="badge-details">
+        Public Direct URL • 200 OK
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Política de Privacidade / Privacy Policy</h1>
+      <div class="hero-meta">
+        <span>Desenvolvedor / Developer: <strong>Wilton de Paula Soares Junior</strong></span>
+        <span>Marca / Brand: <strong>Science Bit COMPUTER</strong></span>
+        <span>Domínio / Domain: <strong>https://sciencebit.com.br</strong></span>
+        <span>Última atualização: <strong>02 de Outubro de 2026</strong></span>
+      </div>
+    </div>
+
+    <!-- 1. IDENTIFICAÇÃO E ESCOPO -->
+    <section class="policy-card">
+      <h2><span class="num">1</span> Identificação do Desenvolvedor e Escopo</h2>
+      <p>
+        Esta Política de Privacidade aplica-se ao portal oficial <strong>https://sciencebit.com.br</strong> e a todos os aplicativos móveis, ferramentas e serviços associados desenvolvidos e publicados por <strong>Wilton de Paula Soares Junior</strong> sob a conta de desenvolvedor <strong>Science Bit COMPUTER</strong> no Google Play Store.
+      </p>
+      <p>
+        Nossos aplicativos abrangem soluções de engenharia de software, inteligência analítica para o mercado financeiro (Bolsa de Valores B3, ações, BDRs, commodities e câmbio), utilitários e aplicações web progressivas (PWA / Trusted Web Activities).
+      </p>
+      <p>
+        O desenvolvedor compromete-se com a total transparência, segurança de dados e cumprimento integral da <strong>LGPD (Lei Geral de Proteção de Dados - Lei nº 13.709/2018 do Brasil)</strong> e das <strong>Políticas de Dados do Usuário do Google Play Console</strong>.
+      </p>
+    </section>
+
+    <!-- 2. DADOS COLETADOS E FINALIDADE -->
+    <section class="policy-card">
+      <h2><span class="num">2</span> Dados Coletados e Finalidade do Tratamento</h2>
+      <p>
+        Nossos aplicativos operam sob estrito princípio de <strong>privacidade por design (Privacy by Design)</strong> e minimização de dados:
+      </p>
+
+      <ul>
+        <li>
+          <strong>Dados Pessoais que NÃO coletamos:</strong> Nossos aplicativos <u>NÃO</u> coletam nem têm acesso a sua lista de contatos, chamadas telefônicas, mensagens SMS, fotos, câmera, microfone, arquivos do dispositivo nem dados biométricos.
+        </li>
+        <li>
+          <strong>Geolocalização:</strong> <u>NÃO</u> rastreamos sua localização em segundo plano nem exigimos acesso ao GPS para o funcionamento dos recursos de análise de mercado.
+        </li>
+        <li>
+          <strong>Preferências Salvas Localmente:</strong> Dados como listas de ativos monitorados, tickers favoritos e preferências de visualização ficam salvos <strong>exclusivamente na memória local do seu próprio aparelho</strong> (LocalStorage / SharedPreferences) e jamais são transmitidos ou comercializados.
+        </li>
+        <li>
+          <strong>Diagnósticos e Falhas Técnicas (Google Play Crashlytics):</strong> Relatórios agregados e anônimos fornecidos pelo Google Play Console (versão do Android, modelo do aparelho e log de travamento) para correção de bugs e estabilidade.
+        </li>
+        <li>
+          <strong>Comunicação Voluntária:</strong> Mensagens enviadas ao suporte por e-mail são utilizadas unicamente para responder à solicitação.
+        </li>
+      </ul>
+
+      <div class="callout-box">
+        <strong>Princípio de Não Comercialização:</strong> A Science Bit COMPUTER <u>nunca</u> vende, aluga ou compartilha dados de usuários com empresas de publicidade terceiras ou corretores de dados.
+      </div>
+    </section>
+
+    <!-- 3. PERMISSÕES ANDROID -->
+    <section class="policy-card">
+      <h2><span class="num">3</span> Permissões Solicitadas no Android e Justificativa</h2>
+      <p>
+        Em estrita conformidade com as diretrizes do Google Play Console:
+      </p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Permissão Android</th>
+              <th>Finalidade Específica</th>
+              <th>Coleta Dados Sensíveis?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag">android.permission.INTERNET</span></td>
+              <td>Necessária para carregar cotações, gráficos de mercado e dados analíticos atualizados dos servidores de nuvem.</td>
+              <td><strong>Não</strong> (Apenas tráfego HTTPS)</td>
+            </tr>
+            <tr>
+              <td><span class="tag">android.permission.ACCESS_NETWORK_STATE</span></td>
+              <td>Verifica se o dispositivo possui conexão ativa (Wi-Fi/4G) antes de requisitar cotações, evitando erros e consumo indevido de dados.</td>
+              <td><strong>Não</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Nenhuma permissão de risco alto (localização em segundo plano, leitura de arquivos externos ou acessibilidade) é solicitada.
+      </p>
+    </section>
+
+    <!-- 4. SERVIÇOS DE TERCEIROS E INFRAESTRUTURA -->
+    <section class="policy-card">
+      <h2><span class="num">4</span> Provedores de Serviço e Infraestrutura de Nuvem</h2>
+      <ul>
+        <li>
+          <strong>Google Play Services / Google LLC:</strong> Distribuição de aplicativos, verificação de integridade e diagnósticos. Consulte a <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color: #60a5fa;">Política de Privacidade do Google</a>.
+        </li>
+        <li>
+          <strong>Google Cloud Platform (GCP) &amp; Cloud Run:</strong> Hospedagem escalável com criptografia TLS 1.3 ponta a ponta.
+        </li>
+        <li>
+          <strong>APIs Públicas de Mercado (B3 / Yahoo Finance / BCB):</strong> Consultas agregadas de cotações financeiras, sem associação com dados de identidade do usuário.
+        </li>
+      </ul>
+    </section>
+
+    <!-- 5. DIREITO DO TITULAR E EXCLUSÃO DE DADOS (CRÍTICO GOOGLE PLAY) -->
+    <section class="policy-card">
+      <h2><span class="num">5</span> Seus Direitos (LGPD) e Solicitação de Exclusão de Dados</h2>
+      <p>
+        Em conformidade com o Artigo 18 da LGPD e os requisitos rigorosos de exclusão de dados do Google Play:
+      </p>
+
+      <div class="callout-deletion">
+        <strong>Mecanismo de Exclusão de Dados (Data Deletion Request):</strong><br />
+        Como nossos aplicativos não exigem cadastro obrigatório nem mantêm contas em banco de dados externo, o usuário pode apagar todas as preferências salvas a qualquer instante simplesmente <strong>limpando o armazenamento do app no Android</strong> (<em>Configurações &gt; Aplicativos &gt; Armazenamento &gt; Limpar Dados</em>) ou desinstalando o aplicativo.<br /><br />
+        Caso você tenha enviado e-mails ou mensagens pelo formulário de contato e deseje a exclusão permanente dos seus registros, basta enviar um e-mail para:<br />
+        📧 <strong style="color: #fff;">camera3.tuca@gmail.com</strong> com o assunto <em>"Exclusão de Dados - Science Bit"</em>.<br />
+        Seu pedido será confirmado e concluído no prazo máximo de <strong>5 (cinco) dias úteis</strong>.
+      </div>
+    </section>
+
+    <!-- 6. PRIVACIDADE DE MENORES (COPPA) -->
+    <section class="policy-card">
+      <h2><span class="num">6</span> Privacidade de Crianças e Menores de Idade (COPPA)</h2>
+      <p>
+        Nossos aplicativos não são direcionados a crianças ou menores de 13 anos. Não coletamos intencionalmente nenhuma informação pessoal de menores. Caso um responsável legal identifique envio indevido, entre em contato pelo e-mail <strong>camera3.tuca@gmail.com</strong> para exclusão imediata.
+      </p>
+    </section>
+
+    <!-- 7. SEGURANÇA DA INFORMAÇÃO -->
+    <section class="policy-card">
+      <h2><span class="num">7</span> Segurança da Informação</h2>
+      <ul>
+        <li>Criptografia obrigatória em trânsito (HTTPS / TLS 1.3) para todas as requisições de rede.</li>
+        <li>Hospedagem em servidores seguros Google Cloud com certificados SSL/TLS atualizados.</li>
+        <li>Isolamento de memória no dispositivo Android via arquitetura sandbox do sistema operacional.</li>
+      </ul>
+    </section>
+
+    <!-- 8. ALTERAÇÕES NA POLÍTICA -->
+    <section class="policy-card">
+      <h2><span class="num">8</span> Atualizações desta Política de Privacidade</h2>
+      <p>
+        A versão mais recente estará sempre disponível publicamente e de forma ininterrupta neste mesmo endereço: <strong>https://sciencebit.com.br/politica-de-privacidade.html</strong> e <strong>https://sciencebit.com.br/privacy.html</strong>.
+      </p>
+    </section>
+
+    <!-- 9. CANAL DE CONTATO E ENCARREGADO (DPO) -->
+    <section class="policy-card">
+      <h2><span class="num">9</span> Encarregado pelo Tratamento de Dados (DPO) e Contato</h2>
+      <div style="background: #1e293b; border-radius: 12px; padding: 16px; margin-top: 12px; font-size: 13px; line-height: 1.8;">
+        <div><strong>Responsável / Encarregado:</strong> Wilton de Paula Soares Junior</div>
+        <div><strong>Desenvolvedor / Marca:</strong> Science Bit COMPUTER</div>
+        <div><strong>E-mail Oficial:</strong> <a href="mailto:camera3.tuca@gmail.com" style="color: #60a5fa;">camera3.tuca@gmail.com</a></div>
+        <div><strong>Portal Oficial:</strong> <a href="https://sciencebit.com.br" target="_blank" rel="noopener noreferrer" style="color: #60a5fa;">https://sciencebit.com.br</a></div>
+        <div><strong>País / Jurisdição:</strong> Brasil (LGPD - Lei nº 13.709/2018)</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="padding-bottom: 0;">
+      <p>&copy; 2026 Science Bit COMPUTER • Wilton de Paula Soares Junior. Todos os direitos reservados.</p>
+      <p style="margin-top: 6px;">
+        <a href="/">Página Inicial</a> • 
+        <a href="/politica-de-privacidade.html">Política de Privacidade</a> • 
+        <a href="/privacy.html">Privacy Policy</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

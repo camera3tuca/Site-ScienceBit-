@@ -1,13 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
-    </linearGradient>
+    <radialGradient id="iconGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1E3A8A" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#080D1A" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <rect width="512" height="512" rx="128" fill="url(#grad)" />
-  <circle cx="256" cy="256" r="160" fill="none" stroke="#38bdf8" stroke-width="24" stroke-dasharray="8 8" opacity="0.6" />
-  <path d="M160 330 L220 230 L280 280 L360 170" fill="none" stroke="#10b981" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" />
-  <circle cx="360" cy="170" r="18" fill="#10b981" />
-  <text x="256" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="4">SCIENCEBIT</text>
+
+  <rect width="512" height="512" fill="#080D1A"/>
+  <circle cx="256" cy="256" r="240" fill="url(#iconGlow)"/>
+
+  <!-- Science Bit -->
+  <text x="256" y="238" font-family="Liberation Sans, Arial, Helvetica, sans-serif" font-size="62" font-weight="bold" text-anchor="middle">
+    <tspan fill="#FFFFFF">Science </tspan><tspan fill="#0066FF">Bit</tspan>
+  </text>
+
+  <!-- — COMPUTER — -->
+  <!-- COMPUTER at font-size 19 with letter-spacing 6 is ~152px wide (from 180 to 332) -->
+  <!-- Left line: 94 to 154 (26px gap before 'C') -->
+  <!-- Right line: 358 to 418 (26px gap after 'R') -->
+  <line x1="94" y1="281" x2="154" y2="281" stroke="#0066FF" stroke-width="4.5" stroke-linecap="round"/>
+  <text x="256" y="288" font-family="Liberation Sans, Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#FFFFFF" letter-spacing="6">COMPUTER</text>
+  <line x1="358" y1="281" x2="418" y2="281" stroke="#0066FF" stroke-width="4.5" stroke-linecap="round"/>
 </svg>
