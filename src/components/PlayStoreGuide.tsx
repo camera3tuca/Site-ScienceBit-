@@ -15,7 +15,8 @@ import {
   FileCode,
   Download,
   Info,
-  Sparkles
+  Sparkles,
+  DollarSign
 } from 'lucide-react';
 
 interface PlayStoreGuideProps {
@@ -308,7 +309,7 @@ export const PlayStoreGuide: React.FC<PlayStoreGuideProps> = ({
       </div>
 
       {/* Grid de Soluções Imediatas */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
 
         {/* Card 1: Política de Privacidade */}
         <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
@@ -400,6 +401,44 @@ export const PlayStoreGuide: React.FC<PlayStoreGuideProps> = ({
             <div className="text-center text-[11px] font-semibold text-emerald-700 bg-emerald-50 py-1.5 rounded-lg border border-emerald-200">
               Zero burocracia de dados
             </div>
+          </div>
+        </div>
+
+        {/* Card 4: Google AdMob app-ads.txt */}
+        <div className="bg-white rounded-2xl p-6 border border-amber-200 shadow-sm flex flex-col justify-between bg-gradient-to-b from-white to-amber-50/20">
+          <div className="space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold">
+              <DollarSign className="w-5 h-5" />
+            </div>
+            <h3 className="font-bold text-slate-900 text-base">4. Verificação AdMob (app-ads.txt)</h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              <strong>Erro AdMob:</strong> <em>"Não foi possível verificar Clima & Radar PRO (app-ads.txt)"</em>. O Google exige este arquivo na raiz do seu site:
+            </p>
+            <div className="p-2.5 bg-amber-50 border border-amber-200 rounded-xl text-[10px] font-mono text-amber-950 break-all select-all font-semibold">
+              google.com, pub-1408734099798382, DIRECT, f08c47fec0942fa0
+            </div>
+            <div className="text-[10px] text-slate-500">
+              URL oficial: <code className="text-blue-600 font-mono">https://{domainName}/app-ads.txt</code>
+            </div>
+          </div>
+
+          <div className="pt-4 flex flex-col gap-2">
+            <button
+              onClick={() => copyToClipboard('google.com, pub-1408734099798382, DIRECT, f08c47fec0942fa0', 'admob-snippet')}
+              className="w-full py-2 px-3 rounded-lg bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-sm"
+            >
+              {copiedSection === 'admob-snippet' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+              <span>{copiedSection === 'admob-snippet' ? 'Copiado!' : 'Copiar Snippet AdMob'}</span>
+            </button>
+            <a
+              href="/app-ads.txt"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-1.5 px-3 rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"
+            >
+              <span>Ver Arquivo no Ar</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
 
@@ -531,6 +570,39 @@ export const PlayStoreGuide: React.FC<PlayStoreGuideProps> = ({
               <div>2. Crie uma faixa de teste e faça upload do seu arquivo <code>.aab</code>.</div>
               <div>3. Na aba "Testadores", crie uma lista de e-mails (amigos, colegas de trabalho ou grupos de testadores de Play Store).</div>
               <div>4. Compartilhe o link do teste com eles para que aceitem o convite. Após os 14 dias, o botão de Produção é liberado automaticamente!</div>
+            </div>
+          </div>
+
+          {/* Item 5: AdMob app-ads.txt */}
+          <div className="p-4 bg-amber-50/70 rounded-2xl border border-amber-300 space-y-2">
+            <div className="flex items-center justify-between">
+              <h4 className="font-bold text-slate-900 text-sm flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+                E. "Não foi possível verificar Clima & Radar PRO (app-ads.txt)" no AdMob
+              </h4>
+              <span className="text-[11px] bg-amber-200 text-amber-900 font-bold px-2 py-0.5 rounded-full">
+                Monetização AdMob
+              </span>
+            </div>
+            <p className="text-xs text-slate-700 leading-relaxed">
+              O Google AdMob verifica o site do desenvolvedor cadastrado na Play Store (<strong>https://sciencebit.com.br</strong>) para confirmar a propriedade do app e proteger contra fraudes de anúncios.
+            </p>
+            <div className="bg-white p-3.5 rounded-xl border border-amber-200 text-xs space-y-2 text-slate-700">
+              <div className="font-bold text-slate-900">Como resolver no AdMob em 3 etapas simples:</div>
+              <ol className="list-decimal pl-5 space-y-2 text-slate-600">
+                <li>
+                  Já geramos o arquivo <code>app-ads.txt</code> pronto com o seu ID oficial da conta AdMob:
+                  <div className="font-mono text-[11px] bg-slate-950 text-amber-300 p-2.5 rounded-lg mt-1 select-all break-all border border-slate-800">
+                    google.com, pub-1408734099798382, DIRECT, f08c47fec0942fa0
+                  </div>
+                </li>
+                <li>
+                  O arquivo está acessível na raiz do seu site em: <code className="text-blue-600 font-semibold bg-blue-50 px-1 py-0.5 rounded">https://{domainName}/app-ads.txt</code>
+                </li>
+                <li>
+                  Basta clicar no botão <strong>"Deploy"</strong> no topo do AI Studio (ou subir no Firebase Hosting) e depois clicar em <strong>"Verificar se há atualizações"</strong> na tela do AdMob! O AdMob detectará o arquivo e verificará o app com sucesso.
+                </li>
+              </ol>
             </div>
           </div>
 

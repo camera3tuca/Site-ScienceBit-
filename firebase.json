@@ -8,6 +8,10 @@
     ],
     "rewrites": [
       {
+        "source": "/app-ads.txt",
+        "destination": "/app-ads.txt"
+      },
+      {
         "source": "/politica-de-privacidade.html",
         "destination": "/politica-de-privacidade.html"
       },
@@ -26,6 +30,21 @@
       {
         "source": "**",
         "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "/app-ads.txt",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain; charset=utf-8"
+          },
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
       }
     ]
   }
